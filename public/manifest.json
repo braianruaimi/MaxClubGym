@@ -1,0 +1,28 @@
+{
+  "name": "MaxClubGym",
+  "short_name": "MaxClubGym",
+  "description": "PWA estatica de MaxClubGym optimizada para rendimiento, SEO y experiencia movil.",
+  "lang": "es-AR",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "categories": ["fitness", "lifestyle", "sports"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

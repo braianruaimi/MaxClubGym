@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">MaxClubGym Icon</title>
+  <desc id="desc">Icono principal de MaxClubGym para manifest y favicon.</desc>
+  <rect width="512" height="512" rx="128" fill="#09090b" />
+  <circle cx="256" cy="180" r="88" fill="#d7ff64" />
+  <path d="M132 366c0-48.601 39.399-88 88-88h72c48.601 0 88 39.399 88 88v22H132z" fill="#ffffff" />
+  <path d="M194 164h124" stroke="#09090b" stroke-width="28" stroke-linecap="round" />
+</svg>
