@@ -36,9 +36,9 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(215,255,100,0.18),transparent_28%),linear-gradient(145deg,rgba(255,255,255,0.06),transparent_55%)]" />
             <div className="relative flex h-full flex-col justify-between">
               <div>
-                <span className="eyebrow">Static PWA stack</span>
+                <span className="eyebrow">Base estatica PWA</span>
                 <h2 className="mt-5 max-w-xl font-display text-4xl uppercase leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl">
-                  Offline real. Export estatico. GitHub Pages sin friccion.
+                  Sin conexion real. Export estatico. GitHub Pages sin friccion.
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
                   La app exporta HTML, CSS y JS listos para publicar, conserva basePath para repositorio y registra service worker para acceso sin conexion en dispositivos moviles.
@@ -47,7 +47,7 @@ export default function HomePage() {
 
               <div className="grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-3">
                 {[
-                  { label: "Lighthouse target", value: "100" },
+                  { label: "Objetivo Lighthouse", value: "100" },
                   { label: "Carga inicial", value: "Ligera" },
                   { label: "Modo de uso", value: "Instalable" },
                 ].map((item) => (

@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 
 const cards = [
   {
-    title: "Crossfit",
+    title: "CrossFit",
     tag: "Carga / velocidad / tecnica",
-    body: "Bloques brutales de fuerza, engine y skill. El layout grande le da el peso visual que merece el servicio mas explosivo.",
-    stats: ["12 estaciones", "Coach lead", "WOD diario"],
+    body: "Bloques brutales de fuerza, motor y tecnica. El modulo principal le da el peso visual que merece el servicio mas explosivo.",
+    stats: ["12 estaciones", "Coach principal", "WOD diario"],
     className: "md:col-span-2 md:row-span-2 min-h-[28rem]",
     accent: "bg-[radial-gradient(circle_at_top_left,rgba(215,255,100,0.18),transparent_32%),linear-gradient(145deg,rgba(255,255,255,0.05),transparent_70%)]",
   },
   {
     title: "Yoga",
-    tag: "Respiracion / control / reset",
+    tag: "Respiracion / control / reinicio",
     body: "Un bloque silencioso con tension visual minima para contrastar con el resto y reforzar la sensacion de sistema.",
-    stats: ["Flow recovery", "Movilidad", "Baja luz"],
+    stats: ["Flujo regenerativo", "Movilidad", "Baja luz"],
     className: "min-h-[18rem]",
     accent: "bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.14),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_66%)]",
   },

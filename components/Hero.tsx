@@ -39,7 +39,7 @@ export function Hero() {
             custom={0.08}
             className="eyebrow"
           >
-            Dark cyber-punk brutalist / alta performance
+            Brutalismo cyberpunk oscuro / alta performance
           </motion.div>
 
           <div className="mt-6 space-y-2 font-display uppercase leading-[0.82] tracking-[-0.08em] text-[clamp(4rem,16vw,11rem)]">
@@ -114,8 +114,8 @@ export function Hero() {
 
           <div className="relative flex h-full flex-col justify-between">
             <div className="flex items-start justify-between gap-4 text-xs font-bold uppercase tracking-[0.28em] text-black sm:text-sm">
-              <span className="bg-white px-3 py-2">Signal up</span>
-              <span className="bg-accent px-3 py-2">PWA ready</span>
+              <span className="bg-white px-3 py-2">senal activa</span>
+              <span className="bg-accent px-3 py-2">PWA lista</span>
             </div>
 
             <div>
@@ -123,17 +123,17 @@ export function Hero() {
                 Gradiente vivo en lugar de hero generico.
               </p>
               <h1 className="mt-4 max-w-xl font-display text-[clamp(3.6rem,11vw,7.8rem)] uppercase leading-[0.8] tracking-[-0.08em] text-black">
-                Power in motion.
+                Potencia en movimiento.
               </h1>
             </div>
 
             <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="border border-black/15 bg-black/80 p-4 text-white">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/48">Stack</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-white/48">Base tecnica</p>
                 <p className="mt-2 text-2xl font-bold uppercase">Next / Tailwind / TS / PWA</p>
               </div>
               <div className="border border-black/15 bg-white/80 p-4 text-black">
-                <p className="text-xs uppercase tracking-[0.24em] text-black/55">Visual system</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-black/55">Sistema visual</p>
                 <p className="mt-2 text-xl font-bold uppercase">Outline hover, bordes duros y contraste extremo.</p>
               </div>
             </div>

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | MaxClubGym",
   },
   description:
-    "PWA estatica de alto rendimiento para MaxClubGym con estetica dark cyber-punk brutalist, optimizada para moviles y despliegue en GitHub Pages.",
+    "PWA estatica de alto rendimiento para MaxClubGym con estetica brutalista cyberpunk oscura, optimizada para moviles y despliegue en GitHub Pages.",
   applicationName: "MaxClubGym",
   manifest: `${basePath}/manifest.json`,
   alternates: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MaxClubGym",
     description:
-      "PWA estatica brutalista con SEO fuerte y despliegue automatico en GitHub Pages.",
+      "PWA estatica brutalista con SEO solido y despliegue automatico en GitHub Pages.",
   },
   icons: {
     icon: `${basePath}/icon.svg`,

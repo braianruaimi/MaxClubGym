@@ -7,16 +7,16 @@ type BlockKey = "ignite" | "prime" | "late";
 
 const baseSlots = {
   ignite: [
-    { label: "05:30 Engine", capacity: 24, reserved: 17 },
-    { label: "07:00 Strength", capacity: 18, reserved: 11 },
+    { label: "05:30 Motor", capacity: 24, reserved: 17 },
+    { label: "07:00 Fuerza", capacity: 18, reserved: 11 },
   ],
   prime: [
-    { label: "13:00 Crossfit", capacity: 28, reserved: 22 },
-    { label: "15:00 Yoga Flow", capacity: 16, reserved: 9 },
+    { label: "13:00 CrossFit", capacity: 28, reserved: 22 },
+    { label: "15:00 Flujo de yoga", capacity: 16, reserved: 9 },
   ],
   late: [
-    { label: "19:30 Peak", capacity: 26, reserved: 24 },
-    { label: "21:00 Recovery", capacity: 14, reserved: 8 },
+    { label: "19:30 Pico", capacity: 26, reserved: 24 },
+    { label: "21:00 Recuperacion", capacity: 14, reserved: 8 },
   ],
 } as const;
 

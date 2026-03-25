@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    name: "Starter Signal",
+    name: "Impulso inicial",
     price: "$39k",
     focus: "Entrada rapida para quien necesita estructura y ritmo.",
-    features: ["3 clases por semana", "Movilidad guiada", "Check-in digital"],
+    features: ["3 clases por semana", "Movilidad guiada", "Registro digital"],
   },
   {
-    name: "Ferocity Mode",
+    name: "Modo feroz",
     price: "$58k",
-    focus: "Volumen alto con prioridad en fuerza, skill y recuperacion.",
-    features: ["Crossfit ilimitado", "Yoga recovery", "Benchmark mensual"],
+    focus: "Volumen alto con prioridad en fuerza, tecnica y recuperacion.",
+    features: ["CrossFit ilimitado", "Yoga regenerativo", "Evaluacion mensual"],
   },
   {
-    name: "Elite Protocol",
+    name: "Protocolo elite",
     price: "$79k",
-    focus: "Coaching integrado para rendimiento con nutricion y seguimiento.",
+    focus: "Acompanamiento integrado para rendimiento con nutricion y seguimiento.",
     features: ["Plan nutricional", "Analisis semanal", "Acceso prioritario"],
   },
 ];
@@ -30,11 +30,11 @@ export function PlansRail() {
         <div className="animate-marquee flex min-w-max gap-8 whitespace-nowrap text-sm font-bold uppercase tracking-[0.32em] text-white/55">
           {Array.from({ length: 2 }).map((_, index) => (
             <div key={index} className="flex gap-8 px-4">
-              <span>Scroll horizontal</span>
+              <span>Desplazamiento horizontal</span>
               <span>Planes de entrenamiento</span>
-              <span>Neon lime</span>
-              <span>Dark brutalism</span>
-              <span>PWA installable</span>
+              <span>Verde neon</span>
+              <span>Brutalismo oscuro</span>
+              <span>PWA instalable</span>
             </div>
           ))}
         </div>
