@@ -71,11 +71,11 @@ export function InstallPrompt() {
   }
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-3xl border border-white/10 bg-black/80 p-4 shadow-2xl backdrop-blur-xl">
+    <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md border border-white/15 bg-black/85 p-4 shadow-2xl backdrop-blur-xl">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold text-white">Instalar MaxClubGym</p>
-          <p className="mt-1 text-sm text-white/65">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent">Instalar MaxClubGym</p>
+          <p className="mt-2 text-sm leading-6 text-white/70">
             {deferredPrompt
               ? "Accede mas rapido desde tu pantalla de inicio."
               : "En iPhone abre Compartir y toca Anadir a pantalla de inicio."}
@@ -86,7 +86,7 @@ export function InstallPrompt() {
           <button
             type="button"
             onClick={handleInstall}
-            className="shrink-0 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-black transition hover:-translate-y-0.5"
+            className="shrink-0 border border-accent bg-accent px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-1"
           >
             Instalar
           </button>

@@ -6,7 +6,7 @@ const basePath = isProduction ? `/${repoName}` : "";
 
 const withPWA = withPWAInit({
   dest: "public",
-  register: true,
+  register: false,
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   disable: !isProduction,
@@ -18,6 +18,7 @@ const withPWA = withPWAInit({
 const nextConfig = {
   output: "export",
   trailingSlash: true,
+  reactStrictMode: true,
   images: {
     unoptimized: true,
   },

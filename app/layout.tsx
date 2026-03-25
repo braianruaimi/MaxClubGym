@@ -1,11 +1,27 @@
 import type { Metadata, Viewport } from "next";
+import { Archivo_Black, Space_Grotesk } from "next/font/google";
 import { InstallPrompt } from "@/components/InstallPrompt";
+import { PWARegistration } from "@/components/PWARegistration";
 import "./globals.css";
 
 const repoName = "MaxClubGym";
 const isProduction = process.env.NODE_ENV === "production";
 const basePath = isProduction ? `/${repoName}` : "";
 const siteUrl = `https://braianruaimi.github.io${basePath}`;
+
+const displayFont = Archivo_Black({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: "400",
+  display: "swap",
+});
+
+const bodyFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -14,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | MaxClubGym",
   },
   description:
-    "PWA estatica de alto rendimiento para MaxClubGym, optimizada para SEO, moviles y despliegue en GitHub Pages.",
+    "PWA estatica de alto rendimiento para MaxClubGym con estetica dark cyber-punk brutalist, optimizada para moviles y despliegue en GitHub Pages.",
   applicationName: "MaxClubGym",
   manifest: `${basePath}/manifest.json`,
   alternates: {
@@ -23,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MaxClubGym",
     description:
-      "Experiencia web premium, instalable y veloz para presentar planes, clases y reservas.",
+      "Experiencia instalable, brutalista y veloz para presentar planes, clases y reservas de alta performance.",
     url: siteUrl,
     siteName: "MaxClubGym",
     locale: "es_AR",
@@ -33,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MaxClubGym",
     description:
-      "PWA estatica con SEO fuerte y despliegue automatico en GitHub Pages.",
+      "PWA estatica brutalista con SEO fuerte y despliegue automatico en GitHub Pages.",
   },
   icons: {
     icon: `${basePath}/icon.svg`,
@@ -59,7 +75,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>
+      <body className={`${displayFont.variable} ${bodyFont.variable} font-body`}>
+        <PWARegistration />
         {children}
         <InstallPrompt />
       </body>

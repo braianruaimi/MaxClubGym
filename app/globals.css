@@ -4,20 +4,144 @@
 
 :root {
   color-scheme: dark;
+  --bg: #050505;
+  --panel: #0d0f12;
+  --acid: #d7ff64;
+  --paper: #f2f5ea;
+  --stroke: rgba(242, 245, 234, 0.72);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   @apply bg-base text-white antialiased;
   background-image:
-    radial-gradient(circle at top, rgba(215, 255, 100, 0.16), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(89, 146, 255, 0.18), transparent 28%);
+    radial-gradient(circle at top left, rgba(215, 255, 100, 0.2), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 20%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 72px
+    );
+  background-color: var(--bg);
+  min-height: 100vh;
 }
 
 ::selection {
   background: rgba(215, 255, 100, 0.85);
   color: #09090b;
+}
+
+@layer base {
+  * {
+    @apply border-white/10;
+  }
+
+  body {
+    @apply font-body;
+  }
+}
+
+@layer components {
+  .brutalist-panel {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-sm;
+    box-shadow: 10px 10px 0 rgba(215, 255, 100, 0.08);
+  }
+
+  .section-shell {
+    @apply mx-auto max-w-7xl px-4 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center border border-white/15 bg-white/[0.04] px-3 py-2 text-[0.7rem] font-bold uppercase tracking-[0.3em] text-white/70;
+  }
+
+  .outline-hover {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--stroke);
+    transition:
+      color 200ms ease,
+      -webkit-text-stroke-color 200ms ease,
+      text-shadow 200ms ease,
+      transform 200ms ease;
+  }
+
+  .outline-hover:hover {
+    color: var(--paper);
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 24px rgba(215, 255, 100, 0.24);
+    transform: translateX(4px);
+  }
+
+  .neon-fill {
+    color: transparent;
+    background-image: linear-gradient(120deg, #ffffff 0%, #d7ff64 45%, #ffffff 100%);
+    background-size: 220% 220%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient-shift 8s linear infinite;
+    text-shadow: 0 0 28px rgba(215, 255, 100, 0.14);
+  }
+
+  .glitch-frame {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glitch-frame::after {
+    content: "";
+    position: absolute;
+    inset: -120% 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(215, 255, 100, 0.12) 50%, transparent 100%);
+    animation: scanline 7s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .cyber-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
 }
