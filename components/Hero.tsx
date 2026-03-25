@@ -42,17 +42,15 @@ export function Hero() {
             Brutalismo cyberpunk oscuro / alta performance
           </motion.div>
 
-          <div className="mt-6 space-y-2 font-display uppercase leading-[0.82] tracking-[-0.08em] text-[clamp(4rem,16vw,11rem)]">
-            <motion.span initial="hidden" animate="show" variants={reveal} custom={0.14} className="neon-fill block">
-              Max
-            </motion.span>
-            <motion.span initial="hidden" animate="show" variants={reveal} custom={0.2} className="outline-hover block">
-              Club
-            </motion.span>
-            <motion.span initial="hidden" animate="show" variants={reveal} custom={0.26} className="outline-hover block">
-              Gym
-            </motion.span>
-          </div>
+          <motion.h1
+            initial="hidden"
+            animate="show"
+            variants={reveal}
+            custom={0.18}
+            className="mt-6 max-w-5xl text-balance font-display text-[clamp(3.6rem,11vw,8rem)] uppercase leading-[0.84] tracking-[-0.08em] text-white"
+          >
+            <span className="neon-fill">MaxClubGym:</span> tu version 2.0 empieza hoy.
+          </motion.h1>
 
           <motion.p
             initial="hidden"
@@ -61,7 +59,7 @@ export function Hero() {
             custom={0.34}
             className="mt-6 max-w-2xl text-balance text-lg leading-8 text-white/75 sm:text-xl"
           >
-            Una PWA con presencia de cartel urbano y precision de producto tecnico. Negro total, acido neon, bordes duros y una narrativa hecha para vender intensidad.
+            No somos un gimnasio mas. Somos un centro de alta performance donde la tecnologia y la fuerza se encuentran. Entrena con proposito, mide tus resultados y rompe tus limites.
           </motion.p>
 
           <motion.div
@@ -71,17 +69,18 @@ export function Hero() {
             custom={0.42}
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
-            <a
-              href="#servicios"
-              className="inline-flex min-h-14 items-center justify-center border border-accent bg-accent px-6 text-sm font-bold uppercase tracking-[0.25em] text-black transition hover:-translate-y-1 hover:shadow-halo"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("maxclub:open-whatsapp"))}
+              className="inline-flex min-h-14 items-center justify-center border border-accent bg-accent px-6 text-sm font-bold uppercase tracking-[0.22em] text-black transition hover:-translate-y-1 hover:shadow-halo"
             >
-              Explorar bloques
-            </a>
+              Quiero mi pase de cortesia
+            </button>
             <a
               href="#planes"
-              className="inline-flex min-h-14 items-center justify-center border border-white/20 bg-white/[0.04] px-6 text-sm font-bold uppercase tracking-[0.25em] text-white transition hover:border-white/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-14 items-center justify-center border border-white/20 bg-white/[0.04] px-6 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/50 hover:bg-white/[0.08]"
             >
-              Ver planes
+              Ver planes de entrenamiento
             </a>
           </motion.div>
 
@@ -114,27 +113,27 @@ export function Hero() {
 
           <div className="relative flex h-full flex-col justify-between">
             <div className="flex items-start justify-between gap-4 text-xs font-bold uppercase tracking-[0.28em] text-black sm:text-sm">
-              <span className="bg-white px-3 py-2">senal activa</span>
-              <span className="bg-accent px-3 py-2">PWA lista</span>
+              <span className="bg-white px-3 py-2">tecnologia aplicada</span>
+              <span className="bg-accent px-3 py-2">foco total</span>
             </div>
 
             <div>
               <p className="max-w-sm text-sm font-bold uppercase tracking-[0.28em] text-black/70 sm:text-base">
-                Gradiente vivo en lugar de hero generico.
+                Fuerza, datos y metodo en una sola experiencia.
               </p>
               <h1 className="mt-4 max-w-xl font-display text-[clamp(3.6rem,11vw,7.8rem)] uppercase leading-[0.8] tracking-[-0.08em] text-black">
-                Potencia en movimiento.
+                Entrena. mide. evoluciona.
               </h1>
             </div>
 
             <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="border border-black/15 bg-black/80 p-4 text-white">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/48">Base tecnica</p>
-                <p className="mt-2 text-2xl font-bold uppercase">Next / Tailwind / TS / PWA</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-white/48">Promesa</p>
+                <p className="mt-2 text-2xl font-bold uppercase">alta performance con resultados medibles</p>
               </div>
               <div className="border border-black/15 bg-white/80 p-4 text-black">
-                <p className="text-xs uppercase tracking-[0.24em] text-black/55">Sistema visual</p>
-                <p className="mt-2 text-xl font-bold uppercase">Outline hover, bordes duros y contraste extremo.</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-black/55">Direccion</p>
+                <p className="mt-2 text-xl font-bold uppercase">pase de cortesia, seguimiento real y acompanamiento.</p>
               </div>
             </div>
           </div>

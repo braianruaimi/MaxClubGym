@@ -4,22 +4,22 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    name: "Impulso inicial",
-    price: "$39k",
-    focus: "Entrada rapida para quien necesita estructura y ritmo.",
-    features: ["3 clases por semana", "Movilidad guiada", "Registro digital"],
+    name: "Basic",
+    price: "$20.000/mes",
+    focus: "La puerta de entrada para empezar con estructura, tecnica y constancia desde la primera semana.",
+    features: ["3 dias por semana", "seguimiento inicial", "adaptacion progresiva"],
   },
   {
-    name: "Modo feroz",
-    price: "$58k",
-    focus: "Volumen alto con prioridad en fuerza, tecnica y recuperacion.",
-    features: ["CrossFit ilimitado", "Yoga regenerativo", "Evaluacion mensual"],
+    name: "Pro",
+    price: "$28.000/mes",
+    focus: "Ilimitado para quien quiere mas volumen, mas control de progreso y mejor recuperacion durante el mes.",
+    features: ["ilimitado", "recuperacion activa", "evaluacion mensual"],
   },
   {
-    name: "Protocolo elite",
-    price: "$79k",
-    focus: "Acompanamiento integrado para rendimiento con nutricion y seguimiento.",
-    features: ["Plan nutricional", "Analisis semanal", "Acceso prioritario"],
+    name: "Elite",
+    price: "$35.000/mes",
+    focus: "Todo incluido para quienes buscan rendimiento total con nutricion personalizada y prioridad operativa.",
+    features: ["todo incluido", "plan nutricional personalizado", "acceso prioritario"],
   },
 ];
 
@@ -34,7 +34,7 @@ export function PlansRail() {
               <span>Planes de entrenamiento</span>
               <span>Verde neon</span>
               <span>Brutalismo oscuro</span>
-              <span>PWA instalable</span>
+              <span>Pase de cortesia</span>
             </div>
           ))}
         </div>
@@ -45,11 +45,11 @@ export function PlansRail() {
           <div className="max-w-3xl">
             <span className="eyebrow">Planes con desplazamiento lateral</span>
             <h2 className="mt-4 font-display text-4xl uppercase leading-none tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
-              Un rail horizontal que obliga a recorrer la oferta como si fuera un catalogo de sistema operativo.
+              Elegi entre basic, pro y elite segun tu nivel de compromiso y el tipo de acompanamiento que buscas.
             </h2>
           </div>
           <p className="max-w-xl text-sm uppercase tracking-[0.18em] text-white/55 sm:text-base">
-            Cada plan se siente como un modulo. El usuario arrastra, compara y aterriza en la opcion correcta sin cansancio visual.
+            Cada plan esta armado para una realidad distinta: empezar, acelerar o ir por rendimiento total.
           </p>
         </div>
 

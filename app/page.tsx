@@ -1,3 +1,5 @@
+"use client";
+
 import { Hero } from "@/components/Hero";
 import { FlowState } from "@/components/FlowState";
 import { PlansRail } from "@/components/PlansRail";
@@ -13,11 +15,11 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <span className="eyebrow">Bento grid de servicios</span>
             <h2 className="mt-4 font-display text-4xl uppercase leading-none tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
-              Un collage funcional que vende energia, precision y metodo.
+              Tres bloques para entrenar mejor, recuperar mejor y rendir mejor.
             </h2>
           </div>
           <p className="max-w-xl text-sm uppercase tracking-[0.18em] text-white/55 sm:text-base">
-            Crossfit, yoga y nutricion aparecen como bloques con personalidad propia. No es una lista: es una interfaz de impacto.
+            Fuerza explosiva, recuperacion activa y bio-hacking alimenticio. Cada modulo explica una parte real del sistema de entrenamiento del gimnasio.
           </p>
         </div>
 
@@ -36,20 +38,20 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(215,255,100,0.18),transparent_28%),linear-gradient(145deg,rgba(255,255,255,0.06),transparent_55%)]" />
             <div className="relative flex h-full flex-col justify-between">
               <div>
-                <span className="eyebrow">Base estatica PWA</span>
+                <span className="eyebrow">Experiencia MaxClubGym</span>
                 <h2 className="mt-5 max-w-xl font-display text-4xl uppercase leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl">
-                  Sin conexion real. Export estatico. GitHub Pages sin friccion.
+                  Tecnologia para entrenar con proposito, no solo para verte entrenar.
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
-                  La app exporta HTML, CSS y JS listos para publicar, conserva basePath para repositorio y registra service worker para acceso sin conexion en dispositivos moviles.
+                  Desde la web puedes pedir tu pase de cortesia, consultar horarios, revisar planes y llegar al gimnasio con informacion clara antes del primer entrenamiento.
                 </p>
               </div>
 
               <div className="grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-3">
                 {[
-                  { label: "Objetivo Lighthouse", value: "100" },
-                  { label: "Carga inicial", value: "Ligera" },
-                  { label: "Modo de uso", value: "Instalable" },
+                  { label: "Pase inicial", value: "1 dia" },
+                  { label: "Ubicacion", value: "La Merced 313" },
+                  { label: "Bicis", value: "zona segura" },
                 ].map((item) => (
                   <div key={item.label} className="border border-white/10 bg-black/30 p-4">
                     <p className="text-xs uppercase tracking-[0.24em] text-white/45">{item.label}</p>
@@ -67,26 +69,27 @@ export default function HomePage() {
           <div>
             <span className="eyebrow">Reserva / prueba / consulta</span>
             <h2 className="mt-4 font-display text-4xl uppercase leading-none tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
-              Alta performance para gente que no quiere una web tibia.
+              Activa tu pase de cortesia y ven a probar el sistema MaxClubGym.
             </h2>
           </div>
 
           <div className="space-y-4">
             <p className="text-base leading-7 text-white/70">
-              El lenguaje visual transmite intensidad antes de explicar nada. Esa diferencia de tono es la ventaja competitiva de la marca.
+              Si buscas un gimnasio con metodo, seguimiento y una propuesta distinta, este es el punto de entrada. La prueba empieza en la web y se valida en el box.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#planes"
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("maxclub:open-whatsapp"))}
                 className="inline-flex min-h-14 items-center justify-center border border-accent bg-accent px-6 text-sm font-bold uppercase tracking-[0.22em] text-black transition hover:-translate-y-1"
               >
-                Ver planes
-              </a>
+                Quiero mi pase de cortesia
+              </button>
               <a
                 href="#flujo"
                 className="inline-flex min-h-14 items-center justify-center border border-white/20 bg-white/[0.04] px-6 text-sm font-bold uppercase tracking-[0.22em] text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
-                Revisar flujo
+                Ver horarios y cupos
               </a>
             </div>
           </div>

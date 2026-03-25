@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Space_Grotesk } from "next/font/google";
+import { FloatingGymActions } from "@/components/FloatingGymActions";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import { PWARegistration } from "@/components/PWARegistration";
 import "./globals.css";
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | MaxClubGym",
   },
   description:
-    "PWA estatica de alto rendimiento para MaxClubGym con estetica brutalista cyberpunk oscura, optimizada para moviles y despliegue en GitHub Pages.",
+    "Centro de alta performance para entrenamiento, recuperacion activa y nutricion basada en datos. Activa tu pase de cortesia y entrena con proposito en MaxClubGym.",
   applicationName: "MaxClubGym",
   manifest: `${basePath}/manifest.json`,
   alternates: {
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MaxClubGym",
     description:
-      "Experiencia instalable, brutalista y veloz para presentar planes, clases y reservas de alta performance.",
+      "Entrena con proposito, mide resultados y rompe tus limites con planes, recuperacion activa y nutricion personalizada.",
     url: siteUrl,
     siteName: "MaxClubGym",
     locale: "es_AR",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MaxClubGym",
     description:
-      "PWA estatica brutalista con SEO solido y despliegue automatico en GitHub Pages.",
+      "Activa tu pase de cortesia y descubre los planes Basic, Pro y Elite de MaxClubGym.",
   },
   icons: {
     icon: `${basePath}/icon.svg`,
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body className={`${displayFont.variable} ${bodyFont.variable} font-body`}>
         <PWARegistration />
         {children}
+        <FloatingGymActions />
         <InstallPrompt />
       </body>
     </html>

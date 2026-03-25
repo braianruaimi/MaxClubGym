@@ -71,7 +71,7 @@ export function InstallPrompt() {
   }
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md border border-white/15 bg-black/85 p-4 shadow-2xl backdrop-blur-xl">
+    <div className="fixed inset-x-4 bottom-40 z-40 mx-auto max-w-md border border-white/15 bg-black/85 p-4 shadow-2xl backdrop-blur-xl sm:bottom-4">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent">Instalar MaxClubGym</p>

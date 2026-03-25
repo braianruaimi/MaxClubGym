@@ -21,9 +21,9 @@ const baseSlots = {
 } as const;
 
 const labels: Record<BlockKey, string> = {
-  ignite: "Ignite / manana",
-  prime: "Prime / tarde",
-  late: "Late / noche",
+  ignite: "Inicio / manana",
+  prime: "Central / tarde",
+  late: "Cierre / noche",
 };
 
 export function FlowState() {
@@ -90,10 +90,10 @@ export function FlowState() {
         <div>
           <span className="eyebrow">Estado de flujo</span>
           <h2 className="mt-5 font-display text-4xl uppercase leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl">
-            Cupos en tiempo real y cronometro de la siguiente ventana.
+            Cupos disponibles y ritmo real de cada bloque horario.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-7 text-white/70">
-            El usuario lee demanda, disponibilidad y ritmo operativo en un vistazo. El dato se vuelve parte de la identidad visual, no un extra escondido.
+            Mira de un vistazo la demanda de cada franja y el momento ideal para sumarte a una sesion sin perder intensidad ni organizacion.
           </p>
         </div>
 
