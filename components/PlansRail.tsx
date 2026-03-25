@@ -53,7 +53,7 @@ export function PlansRail() {
           </p>
         </div>
 
-        <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-4 sm:pr-8 lg:pr-12">
+        <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-4 sm:pr-8 lg:hidden">
           {plans.map((plan, index) => (
             <motion.article
               key={plan.name}
@@ -71,6 +71,48 @@ export function PlansRail() {
                     {plan.name}
                   </h3>
                   <p className="mt-5 max-w-md text-balance text-base leading-7 text-white/70">{plan.focus}</p>
+                </div>
+
+                <div className="grid gap-4">
+                  <div className="border border-accent/35 bg-accent/10 p-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent/80">Valor mensual</p>
+                    <p className="mt-2 font-display text-5xl uppercase tracking-[-0.05em] text-accent">{plan.price}</p>
+                  </div>
+
+                  <div className="grid gap-3">
+                    {plan.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3 border border-white/10 bg-black/25 px-4 py-3">
+                        <span className="min-w-0 flex-1 break-words text-sm font-bold uppercase tracking-[0.14em] text-white/80">
+                          {feature}
+                        </span>
+                        <span className="mt-1 h-2 w-2 shrink-0 bg-accent" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="hidden gap-4 lg:grid lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <motion.article
+              key={plan.name}
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
+              className="brutalist-panel min-h-[24rem] p-7"
+            >
+              <div className="flex h-full flex-col justify-between gap-8">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/46">Plan 0{index + 1}</p>
+                  <h3 className="mt-4 text-balance font-display text-4xl uppercase leading-none tracking-[-0.06em] text-white">
+                    {plan.name}
+                  </h3>
+                  <p className="mt-5 text-balance text-base leading-7 text-white/70">{plan.focus}</p>
                 </div>
 
                 <div className="grid gap-4">

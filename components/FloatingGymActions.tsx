@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { CeoMetricsPanel, recordMetric } from "@/components/CeoMetricsPanel";
 import { VipTrainingPanel } from "@/components/VipTrainingPanel";
 
 const WHATSAPP_NUMBER = "TUNUMERO";
@@ -49,9 +50,14 @@ export function FloatingGymActions() {
   const [isBotOpen, setIsBotOpen] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [isVipOpen, setIsVipOpen] = useState(false);
+  const [isCeoOpen, setIsCeoOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("Basic");
   const [name, setName] = useState("");
   const [botAnswer, setBotAnswer] = useState(quickReplies[0].answer);
+
+  useEffect(() => {
+    recordMetric("view");
+  }, []);
 
   useEffect(() => {
     const openWhatsApp = () => setIsWhatsAppOpen(true);
@@ -78,6 +84,7 @@ export function FloatingGymActions() {
   }, []);
 
   const openWhatsAppLink = () => {
+    recordMetric("redirect_whatsapp", selectedPlan);
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setIsWhatsAppOpen(false);
   };
@@ -87,9 +94,26 @@ export function FloatingGymActions() {
       <div className="pointer-events-none fixed inset-x-0 bottom-20 z-50 mx-auto flex max-w-7xl items-end justify-between px-4 sm:bottom-6 sm:px-8 lg:px-12">
         <motion.button
           type="button"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => {
+            recordMetric("open_ceo");
+            setIsCeoOpen(true);
+          }}
+          className="pointer-events-auto fixed left-4 top-4 inline-flex min-h-11 items-center justify-center border border-white/20 bg-white/[0.03] px-4 text-xs font-bold uppercase tracking-[0.28em] text-white/75 backdrop-blur sm:left-6 sm:top-6"
+          aria-label="Abrir panel CEO"
+        >
+          CEO
+        </motion.button>
+
+        <motion.button
+          type="button"
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.96 }}
-          onClick={() => setIsBotOpen(true)}
+          onClick={() => {
+            recordMetric("open_bot");
+            setIsBotOpen(true);
+          }}
           className="pointer-events-auto inline-flex h-14 w-14 items-center justify-center border border-cyan-400/80 bg-cyan-400/10 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.22)] backdrop-blur md:h-16 md:w-16"
           aria-label="Abrir MaxBot"
         >
@@ -100,7 +124,10 @@ export function FloatingGymActions() {
           type="button"
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.96 }}
-          onClick={() => setIsVipOpen(true)}
+          onClick={() => {
+            recordMetric("open_vip");
+            setIsVipOpen(true);
+          }}
           className="pointer-events-auto inline-flex min-h-14 items-center justify-center border border-accent/70 bg-black/80 px-5 text-sm font-bold uppercase tracking-[0.28em] text-accent shadow-[0_0_30px_rgba(215,255,100,0.18)] backdrop-blur md:min-h-16"
           aria-label="Abrir acceso VIP"
         >
@@ -111,7 +138,10 @@ export function FloatingGymActions() {
           type="button"
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.96 }}
-          onClick={() => setIsWhatsAppOpen(true)}
+          onClick={() => {
+            recordMetric("open_whatsapp");
+            setIsWhatsAppOpen(true);
+          }}
           className="pointer-events-auto inline-flex h-14 w-14 animate-bounce items-center justify-center rounded-full bg-[#25D366] text-black shadow-[0_0_32px_rgba(37,211,102,0.38)] [animation-duration:2.2s] md:h-16 md:w-16"
           aria-label="Abrir WhatsApp"
         >
@@ -155,7 +185,10 @@ export function FloatingGymActions() {
                     <button
                       key={reply.label}
                       type="button"
-                      onClick={() => setBotAnswer(reply.answer)}
+                      onClick={() => {
+                        recordMetric("quick_reply", reply.label);
+                        setBotAnswer(reply.answer);
+                      }}
                       className="border border-white/10 bg-black/25 px-4 py-4 text-left text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:border-cyan-300/50 hover:bg-cyan-400/10"
                     >
                       {reply.label}
@@ -168,7 +201,10 @@ export function FloatingGymActions() {
                   <p className="mt-3 text-base leading-7 text-white/75">{botAnswer}</p>
                   <button
                     type="button"
-                    onClick={() => window.open(botAccessUrl, "_blank", "noopener,noreferrer")}
+                    onClick={() => {
+                      recordMetric("redirect_bot_access");
+                      window.open(botAccessUrl, "_blank", "noopener,noreferrer");
+                    }}
                     className="mt-5 inline-flex min-h-12 items-center justify-center border border-cyan-300/70 bg-cyan-400/10 px-5 text-sm font-bold uppercase tracking-[0.18em] text-cyan-200 transition hover:-translate-y-1 hover:bg-cyan-400/20"
                   >
                     Acceso
@@ -179,6 +215,8 @@ export function FloatingGymActions() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <CeoMetricsPanel isOpen={isCeoOpen} onClose={() => setIsCeoOpen(false)} />
 
       <VipTrainingPanel isOpen={isVipOpen} onClose={() => setIsVipOpen(false)} />
 
