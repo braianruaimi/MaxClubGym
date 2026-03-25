@@ -46,16 +46,16 @@ export function ServicesGrid() {
 
           <div className="relative flex h-full flex-col justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/46">{card.tag}</p>
-              <h3 className="mt-4 font-display text-4xl uppercase leading-none tracking-[-0.06em] text-white sm:text-5xl">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/46">{card.tag}</p>
+              <h3 className="mt-4 text-balance font-display text-4xl uppercase leading-none tracking-[-0.06em] text-white sm:text-5xl">
                 {card.title}
               </h3>
-              <p className="mt-4 max-w-md text-base leading-7 text-white/70">{card.body}</p>
+              <p className="mt-4 max-w-md text-balance text-base leading-7 text-white/70">{card.body}</p>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               {card.stats.map((stat) => (
-                <div key={stat} className="border border-white/10 bg-black/25 px-4 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white/80">
+                <div key={stat} className="border border-white/10 bg-black/25 px-4 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white/80 break-words">
                   {stat}
                 </div>
               ))}
@@ -74,7 +74,7 @@ export function ServicesGrid() {
         <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),transparent_42%),repeating-linear-gradient(90deg,rgba(255,255,255,0.02)_0,rgba(255,255,255,0.02)_1px,transparent_1px,transparent_28px)]" />
         <div className="relative">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-accent">Posicionamiento</p>
-          <h3 className="mt-4 font-display text-3xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
+          <h3 className="mt-4 text-balance font-display text-3xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
             MaxClubGym no vende maquinas. Activa una nueva version de vos.
           </h3>
         </div>
@@ -82,11 +82,11 @@ export function ServicesGrid() {
         <div className="relative grid gap-3 sm:grid-cols-2">
           <div className="border border-white/10 bg-black/25 p-4">
             <p className="text-xs uppercase tracking-[0.22em] text-white/45">Metodo</p>
-            <p className="mt-2 text-xl font-bold uppercase text-white">claro y medible</p>
+            <p className="mt-2 break-words text-xl font-bold uppercase text-white">claro y medible</p>
           </div>
           <div className="border border-white/10 bg-black/25 p-4">
             <p className="text-xs uppercase tracking-[0.22em] text-white/45">Ambiente</p>
-            <p className="mt-2 text-xl font-bold uppercase text-white">intenso y moderno</p>
+            <p className="mt-2 break-words text-xl font-bold uppercase text-white">intenso y moderno</p>
           </div>
         </div>
       </motion.article>

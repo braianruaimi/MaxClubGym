@@ -133,7 +133,7 @@ export function Hero() {
               </div>
               <div className="border border-black/15 bg-white/80 p-4 text-black">
                 <p className="text-xs uppercase tracking-[0.24em] text-black/55">Direccion</p>
-                <p className="mt-2 text-xl font-bold uppercase">pase de cortesia, seguimiento real y acompanamiento.</p>
+                <p className="mt-2 break-words text-xl font-bold uppercase">pase de cortesia, seguimiento real y acompanamiento.</p>
               </div>
             </div>
           </div>

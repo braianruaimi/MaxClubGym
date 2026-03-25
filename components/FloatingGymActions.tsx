@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { VipTrainingPanel } from "@/components/VipTrainingPanel";
 
 const WHATSAPP_NUMBER = "TUNUMERO";
 
@@ -47,6 +48,7 @@ function WhatsAppIcon() {
 export function FloatingGymActions() {
   const [isBotOpen, setIsBotOpen] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+  const [isVipOpen, setIsVipOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("Basic");
   const [name, setName] = useState("");
   const [botAnswer, setBotAnswer] = useState(quickReplies[0].answer);
@@ -71,6 +73,10 @@ export function FloatingGymActions() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
   }, [whatsappMessage]);
 
+  const botAccessUrl = useMemo(() => {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola quiero mi cupo")}`;
+  }, []);
+
   const openWhatsAppLink = () => {
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setIsWhatsAppOpen(false);
@@ -78,7 +84,7 @@ export function FloatingGymActions() {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-x-0 bottom-20 z-50 mx-auto flex max-w-7xl justify-between px-4 sm:bottom-6 sm:px-8 lg:px-12">
+      <div className="pointer-events-none fixed inset-x-0 bottom-20 z-50 mx-auto flex max-w-7xl items-end justify-between px-4 sm:bottom-6 sm:px-8 lg:px-12">
         <motion.button
           type="button"
           whileHover={{ y: -4 }}
@@ -88,6 +94,17 @@ export function FloatingGymActions() {
           aria-label="Abrir MaxBot"
         >
           <LightningIcon />
+        </motion.button>
+
+        <motion.button
+          type="button"
+          whileHover={{ y: -4 }}
+          whileTap={{ scale: 0.96 }}
+          onClick={() => setIsVipOpen(true)}
+          className="pointer-events-auto inline-flex min-h-14 items-center justify-center border border-accent/70 bg-black/80 px-5 text-sm font-bold uppercase tracking-[0.28em] text-accent shadow-[0_0_30px_rgba(215,255,100,0.18)] backdrop-blur md:min-h-16"
+          aria-label="Abrir acceso VIP"
+        >
+          V.I.P.
         </motion.button>
 
         <motion.button
@@ -127,7 +144,7 @@ export function FloatingGymActions() {
                   <button
                     type="button"
                     onClick={() => setIsBotOpen(false)}
-                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/72"
+                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/70"
                   >
                     Cerrar
                   </button>
@@ -149,12 +166,21 @@ export function FloatingGymActions() {
                 <div className="mt-6 border border-white/10 bg-black/25 p-5">
                   <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Respuesta</p>
                   <p className="mt-3 text-base leading-7 text-white/75">{botAnswer}</p>
+                  <button
+                    type="button"
+                    onClick={() => window.open(botAccessUrl, "_blank", "noopener,noreferrer")}
+                    className="mt-5 inline-flex min-h-12 items-center justify-center border border-cyan-300/70 bg-cyan-400/10 px-5 text-sm font-bold uppercase tracking-[0.18em] text-cyan-200 transition hover:-translate-y-1 hover:bg-cyan-400/20"
+                  >
+                    Acceso
+                  </button>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <VipTrainingPanel isOpen={isVipOpen} onClose={() => setIsVipOpen(false)} />
 
       <AnimatePresence>
         {isWhatsAppOpen ? (
@@ -181,7 +207,7 @@ export function FloatingGymActions() {
                   <button
                     type="button"
                     onClick={() => setIsWhatsAppOpen(false)}
-                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/72"
+                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/70"
                   >
                     Cerrar
                   </button>
