@@ -4,8 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CeoMetricsPanel, recordMetric } from "@/components/CeoMetricsPanel";
 import { VipTrainingPanel } from "@/components/VipTrainingPanel";
-
-const WHATSAPP_NUMBER = "TUNUMERO";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const quickReplies = [
   {
@@ -60,7 +59,15 @@ export function FloatingGymActions() {
   }, []);
 
   useEffect(() => {
-    const openWhatsApp = () => setIsWhatsAppOpen(true);
+    const openWhatsApp = (event: Event) => {
+      const detail = (event as CustomEvent<{ plan?: string }>).detail;
+
+      if (detail?.plan) {
+        setSelectedPlan(detail.plan);
+      }
+
+      setIsWhatsAppOpen(true);
+    };
 
     window.addEventListener("maxclub:open-whatsapp", openWhatsApp);
 
@@ -76,11 +83,11 @@ export function FloatingGymActions() {
   }, [name, selectedPlan]);
 
   const whatsappUrl = useMemo(() => {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+    return buildWhatsAppUrl(whatsappMessage);
   }, [whatsappMessage]);
 
   const botAccessUrl = useMemo(() => {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola quiero mi cupo")}`;
+    return buildWhatsAppUrl("Hola quiero mi cupo");
   }, []);
 
   const openWhatsAppLink = () => {
@@ -91,21 +98,21 @@ export function FloatingGymActions() {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-x-0 bottom-20 z-50 mx-auto flex max-w-7xl items-end justify-between px-4 sm:bottom-6 sm:px-8 lg:px-12">
-        <motion.button
-          type="button"
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => {
-            recordMetric("open_ceo");
-            setIsCeoOpen(true);
-          }}
-          className="pointer-events-auto fixed left-4 top-4 inline-flex min-h-11 items-center justify-center border border-white/20 bg-white/[0.03] px-4 text-xs font-bold uppercase tracking-[0.28em] text-white/75 backdrop-blur sm:left-6 sm:top-6"
-          aria-label="Abrir panel CEO"
-        >
-          CEO
-        </motion.button>
+      <motion.button
+        type="button"
+        whileHover={{ scale: 1.08, opacity: 0.28 }}
+        whileTap={{ scale: 0.96 }}
+        onClick={() => {
+          recordMetric("open_ceo");
+          setIsCeoOpen(true);
+        }}
+        className="fixed left-3 top-3 z-[60] h-4 w-4 rounded-full border border-white/10 bg-white/[0.04] text-transparent opacity-12 backdrop-blur transition hover:border-white/20 sm:left-4 sm:top-4"
+        aria-label="Abrir panel CEO"
+      >
+        .
+      </motion.button>
 
+      <div className="pointer-events-none fixed inset-x-0 bottom-20 z-50 mx-auto flex max-w-7xl items-end justify-between px-4 sm:bottom-6 sm:px-8 lg:px-12">
         <motion.button
           type="button"
           whileHover={{ y: -4 }}
@@ -114,7 +121,7 @@ export function FloatingGymActions() {
             recordMetric("open_bot");
             setIsBotOpen(true);
           }}
-          className="pointer-events-auto inline-flex h-14 w-14 items-center justify-center border border-cyan-400/80 bg-cyan-400/10 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.22)] backdrop-blur md:h-16 md:w-16"
+          className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center border border-cyan-400/80 bg-cyan-400/10 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.22)] backdrop-blur md:h-14 md:w-14"
           aria-label="Abrir MaxBot"
         >
           <LightningIcon />
@@ -128,7 +135,7 @@ export function FloatingGymActions() {
             recordMetric("open_vip");
             setIsVipOpen(true);
           }}
-          className="pointer-events-auto inline-flex min-h-14 items-center justify-center border border-accent/70 bg-black/80 px-5 text-sm font-bold uppercase tracking-[0.28em] text-accent shadow-[0_0_30px_rgba(215,255,100,0.18)] backdrop-blur md:min-h-16"
+          className="pointer-events-auto inline-flex min-h-12 items-center justify-center border border-accent/70 bg-black/80 px-4 text-xs font-bold uppercase tracking-[0.22em] text-accent shadow-[0_0_30px_rgba(215,255,100,0.18)] backdrop-blur md:min-h-14 md:px-5 md:text-sm"
           aria-label="Abrir acceso VIP"
         >
           V.I.P.
@@ -142,7 +149,7 @@ export function FloatingGymActions() {
             recordMetric("open_whatsapp");
             setIsWhatsAppOpen(true);
           }}
-          className="pointer-events-auto inline-flex h-14 w-14 animate-bounce items-center justify-center rounded-full bg-[#25D366] text-black shadow-[0_0_32px_rgba(37,211,102,0.38)] [animation-duration:2.2s] md:h-16 md:w-16"
+          className="pointer-events-auto inline-flex h-12 w-12 animate-bounce items-center justify-center rounded-full bg-[#25D366] text-black shadow-[0_0_32px_rgba(37,211,102,0.38)] [animation-duration:2.2s] md:h-14 md:w-14"
           aria-label="Abrir WhatsApp"
         >
           <WhatsAppIcon />
@@ -167,14 +174,14 @@ export function FloatingGymActions() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="eyebrow">Asistente rapido</p>
-                    <h2 className="mt-4 text-balance font-display text-3xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
+                    <h2 className="mt-4 text-balance font-display text-2xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
                       Hola, soy MaxBot. ¿En qué puedo ayudarte hoy?
                     </h2>
                   </div>
                   <button
                     type="button"
                     onClick={() => setIsBotOpen(false)}
-                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/70"
+                    className="border border-white/15 px-3 py-2 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-white/70"
                   >
                     Cerrar
                   </button>
@@ -189,7 +196,7 @@ export function FloatingGymActions() {
                         recordMetric("quick_reply", reply.label);
                         setBotAnswer(reply.answer);
                       }}
-                      className="border border-white/10 bg-black/25 px-4 py-4 text-left text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:border-cyan-300/50 hover:bg-cyan-400/10"
+                      className="border border-white/10 bg-black/25 px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-cyan-300/50 hover:bg-cyan-400/10 sm:text-sm"
                     >
                       {reply.label}
                     </button>
@@ -198,14 +205,14 @@ export function FloatingGymActions() {
 
                 <div className="mt-6 border border-white/10 bg-black/25 p-5">
                   <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Respuesta</p>
-                  <p className="mt-3 text-base leading-7 text-white/75">{botAnswer}</p>
+                  <p className="mt-3 text-sm leading-6 text-white/75 sm:text-base sm:leading-7">{botAnswer}</p>
                   <button
                     type="button"
                     onClick={() => {
                       recordMetric("redirect_bot_access");
                       window.open(botAccessUrl, "_blank", "noopener,noreferrer");
                     }}
-                    className="mt-5 inline-flex min-h-12 items-center justify-center border border-cyan-300/70 bg-cyan-400/10 px-5 text-sm font-bold uppercase tracking-[0.18em] text-cyan-200 transition hover:-translate-y-1 hover:bg-cyan-400/20"
+                    className="mt-5 inline-flex min-h-11 items-center justify-center border border-cyan-300/70 bg-cyan-400/10 px-4 text-xs font-bold uppercase tracking-[0.14em] text-cyan-200 transition hover:-translate-y-1 hover:bg-cyan-400/20 sm:min-h-12 sm:px-5 sm:text-sm"
                   >
                     Acceso
                   </button>
@@ -238,14 +245,14 @@ export function FloatingGymActions() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="eyebrow">Pase de cortesia</p>
-                    <h2 className="mt-4 text-balance font-display text-3xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
+                    <h2 className="mt-4 text-balance font-display text-2xl uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
                       Activa tu mensaje de WhatsApp en un toque.
                     </h2>
                   </div>
                   <button
                     type="button"
                     onClick={() => setIsWhatsAppOpen(false)}
-                    className="border border-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/70"
+                    className="border border-white/15 px-3 py-2 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-white/70"
                   >
                     Cerrar
                   </button>
@@ -258,7 +265,7 @@ export function FloatingGymActions() {
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                       placeholder="Escribe tu nombre"
-                      className="border border-white/10 bg-black/25 px-4 py-4 text-base text-white outline-none transition placeholder:text-white/30 focus:border-accent"
+                      className="border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-accent sm:text-base"
                     />
                   </label>
 
@@ -267,7 +274,7 @@ export function FloatingGymActions() {
                     <select
                       value={selectedPlan}
                       onChange={(event) => setSelectedPlan(event.target.value)}
-                      className="border border-white/10 bg-black/25 px-4 py-4 text-base text-white outline-none transition focus:border-accent"
+                      className="border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none transition focus:border-accent sm:text-base"
                     >
                       <option value="Basic">Basic</option>
                       <option value="Pro">Pro</option>
@@ -278,21 +285,21 @@ export function FloatingGymActions() {
 
                 <div className="mt-6 border border-white/10 bg-black/25 p-5">
                   <p className="text-xs uppercase tracking-[0.22em] text-white/45">Mensaje automatico</p>
-                  <p className="mt-3 text-sm leading-7 text-white/75">{whatsappMessage}</p>
+                  <p className="mt-3 text-sm leading-6 text-white/75">{whatsappMessage}</p>
                 </div>
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <button
                     type="button"
                     onClick={openWhatsAppLink}
-                    className="inline-flex min-h-14 flex-1 items-center justify-center rounded-full bg-[#25D366] px-6 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-1"
+                    className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-[#25D366] px-5 text-xs font-bold uppercase tracking-[0.14em] text-black transition hover:-translate-y-1 sm:min-h-14 sm:px-6 sm:text-sm"
                   >
                     Ir a WhatsApp
                   </button>
                   <button
                     type="button"
                     onClick={() => setIsWhatsAppOpen(false)}
-                    className="inline-flex min-h-14 items-center justify-center border border-white/15 bg-white/[0.03] px-6 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/40"
+                    className="inline-flex min-h-12 items-center justify-center border border-white/15 bg-white/[0.03] px-5 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-white/40 sm:min-h-14 sm:px-6 sm:text-sm"
                   >
                     Cancelar
                   </button>

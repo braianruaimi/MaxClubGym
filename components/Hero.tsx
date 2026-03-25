@@ -47,7 +47,7 @@ export function Hero() {
             animate="show"
             variants={reveal}
             custom={0.18}
-            className="mt-6 max-w-5xl text-balance font-display text-[clamp(3.6rem,11vw,8rem)] uppercase leading-[0.84] tracking-[-0.08em] text-white"
+            className="mt-6 max-w-5xl text-balance font-display text-[clamp(2.8rem,10vw,8rem)] uppercase leading-[0.88] tracking-[-0.08em] text-white"
           >
             <span className="neon-fill">MaxClubGym:</span> tu version 2.0 empieza hoy.
           </motion.h1>
@@ -57,7 +57,7 @@ export function Hero() {
             animate="show"
             variants={reveal}
             custom={0.34}
-            className="mt-6 max-w-2xl text-balance text-lg leading-8 text-white/75 sm:text-xl"
+            className="mt-6 max-w-2xl text-balance text-base leading-7 text-white/75 sm:text-xl sm:leading-8"
           >
             No somos un gimnasio mas. Somos un centro de alta performance donde la tecnologia y la fuerza se encuentran. Entrena con proposito, mide tus resultados y rompe tus limites.
           </motion.p>
@@ -72,13 +72,13 @@ export function Hero() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("maxclub:open-whatsapp"))}
-              className="inline-flex min-h-14 items-center justify-center border border-accent bg-accent px-6 text-sm font-bold uppercase tracking-[0.22em] text-black transition hover:-translate-y-1 hover:shadow-halo"
+              className="inline-flex min-h-12 items-center justify-center border border-accent bg-accent px-5 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-1 hover:shadow-halo sm:min-h-14 sm:px-6 sm:text-sm sm:tracking-[0.22em]"
             >
               Quiero mi pase de cortesia
             </button>
             <a
               href="#planes"
-              className="inline-flex min-h-14 items-center justify-center border border-white/20 bg-white/[0.04] px-6 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/50 hover:bg-white/[0.08]"
+              className="inline-flex min-h-12 items-center justify-center border border-white/20 bg-white/[0.04] px-5 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-white/50 hover:bg-white/[0.08] sm:min-h-14 sm:px-6 sm:text-sm sm:tracking-[0.18em]"
             >
               Ver planes de entrenamiento
             </a>
@@ -94,8 +94,8 @@ export function Hero() {
                 custom={0.5 + index * 0.08}
                 className="border border-white/10 bg-black/25 p-4"
               >
-                <p className="font-display text-4xl uppercase tracking-[-0.05em] text-white">{item.value}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.28em] text-white/48">{item.label}</p>
+                <p className="font-display text-3xl uppercase tracking-[-0.05em] text-white sm:text-4xl">{item.value}</p>
+                <p className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-white/48 sm:text-xs sm:tracking-[0.28em]">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -112,16 +112,16 @@ export function Hero() {
           <div className="absolute inset-y-0 left-10 w-px bg-white/10" />
 
           <div className="relative flex h-full flex-col justify-between">
-            <div className="flex items-start justify-between gap-4 text-xs font-bold uppercase tracking-[0.28em] text-black sm:text-sm">
+            <div className="flex items-start justify-between gap-3 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-black sm:gap-4 sm:text-sm sm:tracking-[0.28em]">
               <span className="bg-white px-3 py-2">tecnologia aplicada</span>
               <span className="bg-accent px-3 py-2">foco total</span>
             </div>
 
             <div>
-              <p className="max-w-sm text-sm font-bold uppercase tracking-[0.28em] text-black/70 sm:text-base">
+              <p className="max-w-sm text-xs font-bold uppercase tracking-[0.16em] text-black/70 sm:text-base sm:tracking-[0.28em]">
                 Fuerza, datos y metodo en una sola experiencia.
               </p>
-              <h1 className="mt-4 max-w-xl font-display text-[clamp(3.6rem,11vw,7.8rem)] uppercase leading-[0.8] tracking-[-0.08em] text-black">
+              <h1 className="mt-4 max-w-xl font-display text-[clamp(2.8rem,10vw,7.8rem)] uppercase leading-[0.84] tracking-[-0.08em] text-black">
                 Entrena. mide. evoluciona.
               </h1>
             </div>
@@ -129,11 +129,11 @@ export function Hero() {
             <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="border border-black/15 bg-black/80 p-4 text-white">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/48">Promesa</p>
-                <p className="mt-2 text-2xl font-bold uppercase">alta performance con resultados medibles</p>
+                <p className="mt-2 text-xl font-bold uppercase sm:text-2xl">alta performance con resultados medibles</p>
               </div>
               <div className="border border-black/15 bg-white/80 p-4 text-black">
                 <p className="text-xs uppercase tracking-[0.24em] text-black/55">Direccion</p>
-                <p className="mt-2 break-words text-xl font-bold uppercase">pase de cortesia, seguimiento real y acompanamiento.</p>
+                <p className="mt-2 break-words text-lg font-bold uppercase sm:text-xl">pase de cortesia, seguimiento real y acompanamiento.</p>
               </div>
             </div>
           </div>
