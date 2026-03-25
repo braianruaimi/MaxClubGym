@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 
+const assetBasePath = process.env.NODE_ENV === "production" ? "/MaxClubGym" : "";
+
+function getAssetPath(path: string) {
+  return `${assetBasePath}${path}`;
+}
+
 const cards = [
   {
     title: "Fuerza explosiva",
@@ -53,10 +59,10 @@ export function ServicesGrid() {
                 {card.title}
               </h3>
               <p className="mt-4 max-w-md text-balance text-base leading-7 text-white/70">{card.body}</p>
-              {"imageSrc" in card ? (
+              {card.imageSrc && card.imageAlt ? (
                 <div className="mt-6 overflow-hidden border border-white/10 bg-black/30 p-2">
                   <img
-                    src={card.imageSrc}
+                    src={getAssetPath(card.imageSrc)}
                     alt={card.imageAlt}
                     className="h-48 w-full object-cover object-center md:h-64"
                     loading="lazy"
