@@ -2,6 +2,12 @@
 
 Landing PWA para gimnasio construida con Next.js, TypeScript y Tailwind CSS, exportada como sitio estatico para GitHub Pages.
 
+## URL publica
+
+Ingresa aqui:
+
+https://braianruaimi.github.io/MaxClubGym/
+
 ## Resumen
 
 El proyecto presenta una experiencia visual brutalista/cyberpunk orientada a captacion comercial para un gimnasio. Incluye:
@@ -9,6 +15,7 @@ El proyecto presenta una experiencia visual brutalista/cyberpunk orientada a cap
 - Hero de alto impacto con CTA directos a WhatsApp.
 - Planes Basic, Pro y Elite.
 - Servicios del gimnasio y bloque de estado de flujo.
+- La card de Fuerza explosiva usa una foto real cargada en `public/descarga.jpg`.
 - Botones flotantes para WhatsApp, MaxBot, acceso V.I.P. y panel CEO.
 - PWA instalable con soporte offline en produccion.
 - Export estatico compatible con GitHub Pages.

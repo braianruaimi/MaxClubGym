@@ -10,6 +10,8 @@ const cards = [
     stats: ["tecnica de elite", "acompanamiento", "progresion real"],
     className: "md:col-span-2 md:row-span-2 min-h-[28rem]",
     accent: "bg-[radial-gradient(circle_at_top_left,rgba(215,255,100,0.18),transparent_32%),linear-gradient(145deg,rgba(255,255,255,0.05),transparent_70%)]",
+    imageSrc: "/descarga.jpg",
+    imageAlt: "Atleta entrenando con mancuernas en el gimnasio",
   },
   {
     title: "Recuperacion activa",
@@ -51,6 +53,16 @@ export function ServicesGrid() {
                 {card.title}
               </h3>
               <p className="mt-4 max-w-md text-balance text-base leading-7 text-white/70">{card.body}</p>
+              {"imageSrc" in card ? (
+                <div className="mt-6 overflow-hidden border border-white/10 bg-black/30 p-2">
+                  <img
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    className="h-48 w-full object-cover object-center md:h-64"
+                    loading="lazy"
+                  />
+                </div>
+              ) : null}
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
